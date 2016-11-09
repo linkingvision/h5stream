@@ -272,11 +272,11 @@ typedef long off_t;
 #define NO_SOCKLEN_T
 
 #if defined(_WIN64) || defined(__MINGW64__)
-#define SSL_LIB "ssleay64.dll"
-#define CRYPTO_LIB "libeay64.dll"
+#define SSL_LIB "ssleay64MD.dll"
+#define CRYPTO_LIB "libeay64MD.dll"
 #else
-#define SSL_LIB "ssleay32.dll"
-#define CRYPTO_LIB "libeay32.dll"
+#define SSL_LIB "ssleay32MD.dll"
+#define CRYPTO_LIB "libeay32MD.dll"
 #endif
 
 #define O_NONBLOCK (0)

@@ -1,0 +1,1 @@
+h5ss "rtsp://192.168.0.167:554/Streaming/Channels/101?transportmode=unicast&profile=Profile_1" admin admin

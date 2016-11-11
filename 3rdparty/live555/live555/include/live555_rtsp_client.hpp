@@ -26,6 +26,7 @@ along with this library; if not, write to the Free Software Foundation, Inc.,
 #include "liveMedia.hh"
 #include "BasicUsageEnvironment.hh"
 #include "DigestAuthentication.hh"
+#include "H264VideoRTPSource.hh"
 
 #define LIVE555_LOG std::cout
 
@@ -128,6 +129,11 @@ class LIVE555_LIBRARY_API Live555RTSPConnection : public RTSPClient
 				/* TODO Add a param steam type video/audio/meda data */
 				virtual bool    onData(unsigned char* buffer, int size, unsigned long long secs, 
 											unsigned long long msecs, Live555CodecType codec) = 0;
+				/*
+					H264 "sprop-parameter-sets"
+					H265 "sprop-vps" "sprop-sps" "sprop-pps"
+				*/
+				virtual bool onParameter(std::string strKey, std::string strValue) = 0;
 				virtual int onNewBuffer(unsigned char* buffer, int size) { return 0; };
 		};
 
@@ -139,10 +145,12 @@ class LIVE555_LIBRARY_API Live555RTSPConnection : public RTSPClient
 		{
 			public:
 				static SessionSink* createNew(UsageEnvironment& env, Callback* callback, 
-					Live555CodecType codec) { return new SessionSink(env, callback, codec); }
+					Live555CodecType codec, char const* spropparametersets) 
+					{ return new SessionSink(env, callback, codec, spropparametersets); }
 
 			private:
-				SessionSink(UsageEnvironment& env, Callback* callback, Live555CodecType codec);
+				SessionSink(UsageEnvironment& env, Callback* callback, Live555CodecType codec, 
+					char const* spropparametersets);
 				virtual ~SessionSink();
 
 				void allocate(int bufferSize);
@@ -165,6 +173,8 @@ class LIVE555_LIBRARY_API Live555RTSPConnection : public RTSPClient
 				Callback*              m_callback; 	
 				int                m_markerSize;
 				Live555CodecType m_codecType;
+				std::string m_fmtp_spropparametersets;//"sprop-parameter-sets"
+				bool 		m_bFirstFrame;
 		};
 	
 	public:
@@ -220,6 +230,11 @@ class LIVE555_LIBRARY_API Live555RTSPClient : public Live555RTSPConnection::Call
 			std::cout << "onData" << "  " << codec << "  " << "  " << secs << "  " << msecs  << "  " << size << std::endl;
 
 			return true;
+		}
+		virtual bool onParameter(std::string strKey, std::string strValue)
+		{
+			printf("%s key %s value %s\n", __FUNCTION__, strKey.c_str(), strValue.c_str());
+			return true;			
 		}
 	  
 		virtual void RTSPStop() 

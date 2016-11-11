@@ -1,4 +1,4 @@
-set H5S_VER=r1.0.1109.16
+set H5S_VER=r1.0.1112.16
 set H5S_VER_PHASE=release
 
 mkdir H5S-%H5S_VER%-win32-%H5S_VER_PHASE%

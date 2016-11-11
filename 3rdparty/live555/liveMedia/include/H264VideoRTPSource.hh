@@ -59,7 +59,17 @@ public:
   unsigned char* sPropBytes;
 };
 
-SPropRecord* parseSPropParameterSets(char const* sPropParameterSetsStr,
+#if defined(_WIN32)
+#if defined(LIVE555_EXPORTS)
+#define LIVE_MEDIA_LIBRARY_API __declspec(dllexport)
+#else
+#define LIVE_MEDIA_LIBRARY_API 
+#endif
+#else
+#define LIVE_MEDIA_LIBRARY_API
+#endif
+
+LIVE_MEDIA_LIBRARY_API SPropRecord*  parseSPropParameterSets(char const* sPropParameterSetsStr,
 				     // result parameter:
 				     unsigned& numSPropRecords);
     // Returns the binary value of each 'parameter set' specified in a

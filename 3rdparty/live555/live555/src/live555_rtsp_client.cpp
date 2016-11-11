@@ -32,14 +32,20 @@ Live555Environment::~Live555Environment()
 }
 
 Live555RTSPConnection::SessionSink::SessionSink(UsageEnvironment& env, Callback* callback, 
-	Live555CodecType codec) 
+	Live555CodecType codec, char const* spropparametersets) 
 	: MediaSink(env)
 	, m_bufferSize(0)
 	, m_buffer(NULL)
 	, m_callback(callback) 
 	, m_markerSize(0)
 	, m_codecType(codec)
+	, m_bFirstFrame(true)
 {
+	if (spropparametersets)
+	{
+		m_fmtp_spropparametersets = spropparametersets;
+		printf("fmtp spropparametersets %s\n", m_fmtp_spropparametersets.c_str());
+	}
 	allocate(1024*1024);
 }
 
@@ -72,6 +78,12 @@ void Live555RTSPConnection::SessionSink::afterGettingFrame(unsigned frameSize, u
 	}
 	else if (m_callback)
 	{
+		/* first frame set the  m_strSpropparametersets TODO update for H265*/
+		if (m_bFirstFrame == true)
+		{
+			m_callback->onParameter("sprop-parameter-sets", m_fmtp_spropparametersets);
+			m_bFirstFrame = false;
+		}
 		//printf("durationInMicroseconds %d\n", durationInMicroseconds);
 		//gettimeofday(&presentationTime, NULL);
 		if (!m_callback->onData(m_buffer, frameSize+m_markerSize, 
@@ -150,7 +162,7 @@ void Live555RTSPConnection::sendNextCommand()
 		else
 		{
 			// no more subsession to SETUP, send PLAY
-			this->sendPlayCommand(*m_session, continueAfterPLAY, (double)0, (double)0, (float)0, &m_Authenticator);
+			this->sendPlayCommand(*m_session, continueAfterPLAY, (double)0, (double)-1, (float)0, &m_Authenticator);
 		}
 	}
 }
@@ -180,7 +192,8 @@ void Live555RTSPConnection::continueAfterSETUP(int resultCode, char* resultStrin
 	else
 	{	
 		Live555CodecType codec = GetSessionCodecType(m_subSession->mediumName(), m_subSession->codecName());
-		m_subSession->sink = SessionSink::createNew(envir(), m_callback, codec);
+		m_subSession->sink = SessionSink::createNew(envir(), m_callback, codec, 
+			m_subSession->fmtp_spropparametersets());
 		if (m_subSession->sink == NULL) 
 		{
 			LIVE555_LOG << "Failed to create a data sink for " << m_subSession->mediumName() << "/" << m_subSession->codecName() << " subsession: " << envir().getResultMsg() << "\n";
@@ -199,11 +212,11 @@ void Live555RTSPConnection::continueAfterPLAY(int resultCode, char* resultString
 {
 	if (resultCode != 0) 
 	{
-		LIVE555_LOG << "Failed to PLAY: " << resultString;
+		LIVE555_LOG << "Failed to PLAY: \n" << resultString;
 	}
 	else
 	{
-		LIVE555_LOG << "PLAY OK";
+		LIVE555_LOG << "PLAY OK\n";
 	}
 	delete[] resultString;
 }

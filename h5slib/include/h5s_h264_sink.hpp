@@ -10,13 +10,22 @@
 class H5S_LIBRARY_API H5SH264Sink : public H5SSink
 {
 public:
-	H5SH264Sink(H5SCallback &pCallback)
+	H5SH264Sink(H5SCallback &pCallback, unsigned char * sps, int spsLen, unsigned char * pps, 
+					int ppsLen)
 	:H5SSink(pCallback), m_PPSLen(0), m_SPSLen(0), m_pPPS(NULL), m_pSPS(NULL), 
 	m_bGetIFrame(false), m_pBuffer(NULL), m_BufferLen(0)
 	{
 		/* Default buffer is 512k */
 		m_BufferLen = 1024 * 512;
 		m_pBuffer = (unsigned char * )malloc(m_BufferLen);
+		if (sps)
+		{
+			UpdateSPS(sps, spsLen);
+		}
+		if (pps)
+		{
+			UpdatePPS(pps, ppsLen);
+		}
 	}
 	~H5SH264Sink();
 public:

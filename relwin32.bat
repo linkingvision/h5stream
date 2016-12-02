@@ -1,3 +1,5 @@
+for /f "tokens=3 usebackq" %%G in (h5slib\include\confver.hpp) do set H5S_VER=%%G
+echo %H5S_VER%
 set H5S_VER=r1.0.1112.16
 set H5S_VER_PHASE=release
 

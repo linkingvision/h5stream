@@ -1,6 +1,10 @@
 #ifndef __H5S_H264_SINK_LIB__
 #define __H5S_H264_SINK_LIB__
 
+#ifdef LINUX
+#include <stdlib.h>
+#endif
+
 #include <string.h>
 #include <vector>
 #include <iostream>

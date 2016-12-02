@@ -1,0 +1,1 @@
+#define H5S_VERSION "r1.0.1112.16"

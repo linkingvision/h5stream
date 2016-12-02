@@ -1,6 +1,7 @@
 #ifndef __MSE_API_H__
 #define __MSE_API_H__
 
+#include "civetweb.h"
 #include "CivetServer.h"
 #include "h5slib.hpp"
 #include "h5s_mp4_sink.hpp"

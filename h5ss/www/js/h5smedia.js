@@ -1,18 +1,18 @@
 
-function H5SWebSocketClient()
+function H5SWebSocketClient(h5spath)
 {
 	var socket;
 	try {
 		//alert(window.location.protocol);
 		if (window.location.protocol == "http:") 
 		{
-			socket = new WebSocket('ws://' + window.location.host + '/h5sws');
+			socket = new WebSocket('ws://' + window.location.host + h5spath);
 		}
 		if (window.location.protocol == "https:")
 		{	
 			//alert(window.location.host);
 			console.log(window.location.host);
-			socket = new WebSocket('wss://' + window.location.host + '/h5sws');			 
+			socket = new WebSocket('wss://' + window.location.host + h5spath);			 
 		}
 		console.log(window.location.host);
 	} catch (e) {
@@ -68,9 +68,11 @@ window.onload = function() {
 
 	mediaSource = new window.MediaSource();
 	video = document.getElementById('h5sVideo');
+	
+	var h5spath = video.getAttribute('h5spath');
 
 	/* var video = document.querySelector('h5sVideo'); */
-	//alert(video);
+	//alert(h5spath);
 	video.src = window.URL.createObjectURL(mediaSource);
 
 	mediaSource.addEventListener('sourceopen', function () {
@@ -84,7 +86,7 @@ window.onload = function() {
 	});
 
 	video.addEventListener('play', function () {
-		wsSocket = H5SWebSocketClient();
+		wsSocket = H5SWebSocketClient(h5spath);
 		wsSocket.onmessage = onWebSocketData;
 		setInterval(keepaliveTimer, 1000);	
 	}, false);

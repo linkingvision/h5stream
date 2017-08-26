@@ -2,6 +2,12 @@
 
 *  [Download](https://github.com/veyesys/version/tree/master/h5stream)
 
+*  [Manual](https://linkingv.gitbooks.io/h5s-user-manual/content/)
+
+*  [Manual PDF](https://www.gitbook.com/download/pdf/book/linkingv/h5s-user-manual)
+
+
+
 ![](https://raw.githubusercontent.com/xsmart/ve-img/master/h5stream/h5s.png)
 
 ### Features list ###

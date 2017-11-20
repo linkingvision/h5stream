@@ -33,15 +33,14 @@
 	Android 4.4.4+
 
 ### Usage ###	
-	Usage ./h5ss url user passwd (./h5ss rtsp://192.168.0.1/stream1 admin admin), then open the browser with the url(in the hss console)
-
+	Usage ./h5ss 
 #### License ####
 
 
 For more guide
-[http://veyesys.com/](http://veyesys.com/)
+[https://www.linkingvision.com/](https://www.linkingvision.com/)
 
-Mail  : [support@veyesys.com](support@veyesys.com)
+Mail  : [info@linkingvision.com](info@linkingvision.com)
 
 Skype : xsmart@veyesys.com
 

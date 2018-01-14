@@ -16,7 +16,7 @@
 	Support Websocket 
 	Support video encryption by Websocket over SSL
 	Don't need transcoding.
-	Low latency, in Chrome Firefox and safari the best latency is 300ms(1080P)
+	HTML5 video Low latency, in Chrome Firefox and safari the best latency is 300ms(1080P)
 	API for embedded device Raw H264 stream input.
 	Chrome & safari Hardware decoding support.
 

@@ -4,6 +4,17 @@
 
 *  [Manual](https://linkingvision.com/download/documentation/)
 
+Recently, as the Internet also the Mobile grow quickly, more and more Mobile APP based on HTML5, so the big challenge is the video streaming for browser, and Flash has a lot of problem, so most Brower has begin to stop flash by 2020. And all the browser has top the plugin. Currently IP Camera/NVR/VMS web browser only support IE11, so it is import to support video streaming in browser without plugin. 
+
+And the HTML5 native video streaming technology are very different. And the low latency is an important requirement, so how to achieve 1s or 500ms latency is a big challenge. 
+
+The cloud is very common now, remote cloud video streaming and video sharing with low latency is also important.
+
+H5STREAM support the HTML5 native video streaming and cloud video streaming through WEBRTB WEBSOCKET RTMP FLV. Below is all the technology we used for different browser.
+
+![](https://raw.githubusercontent.com/linkingvision/h5stream/master/doc/spec/5.JPG)
+
+
 ![](https://raw.githubusercontent.com/linkingvision/h5stream/master/doc/spec/1.JPG)
 
 ![](https://raw.githubusercontent.com/linkingvision/h5stream/master/doc/spec/2.JPG)
@@ -11,8 +22,6 @@
 ![](https://raw.githubusercontent.com/linkingvision/h5stream/master/doc/spec/3.JPG)
 
 ![](https://raw.githubusercontent.com/linkingvision/h5stream/master/doc/spec/4.JPG)
-
-![](https://raw.githubusercontent.com/linkingvision/h5stream/master/doc/spec/5.JPG)
 
 ![](https://raw.githubusercontent.com/linkingvision/h5stream/master/doc/spec/6.JPG)
 

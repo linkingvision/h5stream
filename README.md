@@ -1,12 +1,20 @@
 # H5S is a HTML5 streaming server #
 
-*  [Download](https://github.com/veyesys/version/tree/master/h5stream)
+*  [Download](https://linkingvision.com/download/)
 
-*  [Manual](https://linkingv.gitbooks.io/h5s-user-manual/content/)
+*  [Manual](https://linkingvision.com/download/documentation/)
 
-*  [Manual PDF](https://www.gitbook.com/download/pdf/book/linkingv/h5s-user-manual)
+![](https://raw.githubusercontent.com/linkingvision/h5stream/master/doc/spec/1.JPG)
 
+![](https://raw.githubusercontent.com/linkingvision/h5stream/master/doc/spec/2.JPG)
 
+![](https://raw.githubusercontent.com/linkingvision/h5stream/master/doc/spec/3.JPG)
+
+![](https://raw.githubusercontent.com/linkingvision/h5stream/master/doc/spec/4.JPG)
+
+![](https://raw.githubusercontent.com/linkingvision/h5stream/master/doc/spec/5.JPG)
+
+![](https://raw.githubusercontent.com/linkingvision/h5stream/master/doc/spec/6.JPG)
 
 ![](https://raw.githubusercontent.com/xsmart/ve-img/master/h5stream/h5s.png)
 
@@ -20,10 +28,6 @@
 	API for embedded device Raw H264 stream input.
 	Chrome & safari Hardware decoding support.
 
-### TODO ###
-	HEVC for MS Edge support.
-	4K video source testing.
-
 ### Browser support ###
 	Firefox 49+
 	Chrome 49+
@@ -32,9 +36,6 @@
 	Opera 41+
 	Android 4.4.4+
 
-### Usage ###	
-	Usage ./h5ss 
-#### License ####
 
 
 For more guide
@@ -42,6 +43,6 @@ For more guide
 
 Mail  : [info@linkingvision.com](info@linkingvision.com)
 
-Skype : xsmart@veyesys.com
+Skype :  linkingv@linkingvision.com
 
 QQ    : 2104915834

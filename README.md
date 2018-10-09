@@ -25,6 +25,8 @@ H5STREAM support the HTML5 native video streaming and cloud video streaming thro
 
 ![](https://raw.githubusercontent.com/linkingvision/h5stream/master/doc/spec/6.JPG)
 
+![](https://raw.githubusercontent.com/linkingvision/h5stream/master/doc/spec/7.JPG)
+
 ![](https://raw.githubusercontent.com/xsmart/ve-img/master/h5stream/h5s.png)
 
 ### Features list ###
